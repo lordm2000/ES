@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_4R5IoK9DEeuhk_kO2diMvA" name="Diagrama">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_4W6ykK9DEeuhk_kO2diMvA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_TbxqkK9FEeuhk_kO2diMvA">
+    <importedPackage xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WFcJkK9HEeuhk_kO2diMvA" name="Utilizador" visibility="package">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Y1daIK9HEeuhk_kO2diMvA" name="numUtilizador" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_zBYUcK9HEeuhk_kO2diMvA" name="nome" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_BH-bsK9IEeuhk_kO2diMvA" name="password" visibility="private" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Osd7cK9IEeuhk_kO2diMvA" name="proxU" visibility="private" type="_WFcJkK9HEeuhk_kO2diMvA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_9Gi7sK9JEeuhk_kO2diMvA" name="PrimR" visibility="private" type="_iarygK9IEeuhk_kO2diMvA" isUnique="false"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_KenwEK9KEeuhk_kO2diMvA" name="Utilizador"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_iarygK9IEeuhk_kO2diMvA" name="Reserva" visibility="package"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_lm86MK9IEeuhk_kO2diMvA" name="Publicacoes" visibility="package"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_haJNcK9GEeuhk_kO2diMvA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_haOtAK9GEeuhk_kO2diMvA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+  </profileApplication>
+</uml:Model>

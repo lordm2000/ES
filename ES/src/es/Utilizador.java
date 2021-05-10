@@ -1,50 +1,28 @@
 package es;
 
-public class Utilizador {
-	private int numUtilizador;
-	private String nome;
-	private String password;
-	private Reserva primRes;
-	private Utilizador proxU;
+
+public interface Utilizador {
 	
-	public Utilizador(int numUtilizador, String nome, String password) {
-		this.numUtilizador = numUtilizador;
-		this.nome = nome;
-		this.password = password;
-	}
 
-	public Reserva getPrimRes() {
-		return primRes;
-	}
+	Reserva getPrimRes();
 
-	public void setPrimRes(Reserva primRes) {
-		this.primRes = primRes;
-	}
+	void setPrimRes(Reserva primRes);
 
-	public Utilizador getProxU() {
-		return proxU;
-	}
+	Utilizador getProxU();
 
-	public void setProxU(Utilizador proxU) {
-		this.proxU = proxU;
-	}
+	void setProxU(Utilizador proxU);
 
-	public int getNumUtilizador() {
-		return numUtilizador;
-	}
+	int getNumUtilizador();
 
-	public String getNome() {
-		return nome;
-	}
+	String getNome();
 
-	public String getPassword() {
-		return password;
-	}
-
-	@Override
-	public String toString() {
-		return "Número de Utilizador: " + numUtilizador + "    Nome: " + nome;
-	}
+	String getPassword();
+	
+	void addRes(Reserva r);
+	
+	void imprimeRes();
+	
+	public String toString();
 	
 	
 	
