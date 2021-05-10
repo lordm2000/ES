@@ -1,5 +1,6 @@
 package es;
 
+
 public class Utilizador {
 	private int numUtilizador;
 	private String nome;
@@ -40,7 +41,29 @@ public class Utilizador {
 	public String getPassword() {
 		return password;
 	}
-
+	
+	/**
+	 * Adicionar reserva
+	 * @param r
+	 */
+	public void addRes(Reserva r) {
+		r.setProxPU(primRes);
+		primRes = r;
+	}
+	
+	/**
+	 * Imprimir reservas
+	 */
+	public void imprimeRes() {
+		Reserva temp = primRes;
+		
+		while(temp!=null) {
+			System.out.println(temp);
+			temp=temp.getProxPU();
+		}
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Número de Utilizador: " + numUtilizador + "    Nome: " + nome;

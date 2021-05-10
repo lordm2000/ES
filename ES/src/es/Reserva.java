@@ -47,5 +47,8 @@ public class Reserva {
 		return refU;
 	}
 	
+	public String toString() {
+		return "Código da reserva: "+codReserva+ "    Data: "+data+"    Número da publicação: "+refP.getNumPub()+"    Número do Utilizador: "+refU.getNumUtilizador();
+	}
 	
 }
