@@ -6,15 +6,15 @@ public class Publicacoes {
 	private String titulo;
 	private int ano;
 	private Publicacoes proxP;
-	private String dispo;
 	private Reserva primRes;
 	
-	public Publicacoes(int numPub, String titulo, int ano, String dispo) {
+	public Publicacoes(int numPub, String titulo, int ano) {
 		this.numPub = numPub;
 		this.titulo = titulo;
 		this.ano = ano;
-		this.dispo = dispo;
 	}
+	
+	
 	
 	public Reserva getPrimRes() {
 		return primRes;
@@ -38,6 +38,16 @@ public class Publicacoes {
 		}
 	}
 	
+	public Reserva procReserva(int cod) {
+		Reserva temp=primRes;
+		
+		while(temp!=null && temp.getCodReserva()!=cod)
+			temp = temp.getProxUP();
+		
+		
+		return temp;
+	}
+	
 	public void imprimeRes() {
 		Reserva temp = primRes;
 		
@@ -55,17 +65,6 @@ public class Publicacoes {
 		this.proxP = proxP;
 	}
 
-	public String getDispo() {
-		return dispo;
-	}
-
-	public void setDispo() {
-		if(dispo.equalsIgnoreCase("Sim"))
-			dispo="Nao";
-		else
-			dispo="Sim";
-	}
-
 	public int getNumPub() {
 		return numPub;
 	}
@@ -79,7 +78,7 @@ public class Publicacoes {
 	}
 
 	public String toString() {
-		return "Número de Publicações: " + numPub + "    Titulo: " + titulo + "    Ano: " + ano + "    Disponibilidade: " + dispo ;
+		return "Número de Publicações: " + numPub + "    Titulo: " + titulo + "    Ano: " + ano ;
 	}
 	
 	

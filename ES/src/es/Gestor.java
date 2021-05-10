@@ -5,11 +5,18 @@ public class Gestor {
 	private String password;
 	private Utilizador primU;
 	private Publicacoes primP;
+	private int numRes;
+	private static Gestor instancia = new Gestor("admin");
 	
-	
-	public Gestor(String password) {
+	private Gestor(String password) {
 		this.password = password;
+		numRes=0;
 	}
+	
+	public static Gestor getInstancia() {
+		return instancia;
+	}
+	
 	
 	/**
 	 * Autenticar administrador
@@ -53,39 +60,49 @@ public class Gestor {
 	 * @param password
 	 * @param nome
 	 */
-	public void addUtilizador(int num, String pass, String nome) {
-		Utilizador novoU = new Utilizador(num, nome, pass);
+	public void addUtilizador(String tipo, int num, String pass, String nome) {
 		
-		if(primU==null) {
-			primU=novoU;
-			System.out.println("Utilizador registrado com sucesso");
+		UtiFactory factory = new UtiFactory();
+
+		Utilizador novoU = factory.getUtilizador(tipo, num, pass, nome);
+		
+		if(novoU==null) {
+			System.out.println("Tipo de requisitante inexistente");
 		}
-			
+		
 		else {
-			if(procUti(num)==null){
-				
-				if(nome.compareTo(primU.getNome())<0) {
-					novoU.setProxU(primU);
-					primU = novoU;
-					System.out.println("Utilizador registrado com sucesso");
-				}
-				
-				else {
-					Utilizador ant = primU;
-					Utilizador temp = primU.getProxU();
-					
-					while(temp!=null && nome.compareTo(temp.getNome())>0)
-						temp = temp.getProxU();
-					
-					novoU.setProxU(temp);
-					ant.setProxU(novoU);
-					System.out.println("Utilizador registrado com sucesso");
-				}
+			if(primU==null) {
+				primU=novoU;
+				System.out.println("Utilizador registrado com sucesso");
 			}
-			
-			else
-				System.out.println("O número já está sendo utilizado");
-		}	
+				
+			else {
+				if(procUti(num)==null){
+					
+					if(nome.compareTo(primU.getNome())<0) {
+						novoU.setProxU(primU);
+						primU = novoU;
+						System.out.println("Utilizador registrado com sucesso");
+					}
+					
+					else {
+						Utilizador ant = primU;
+						Utilizador temp = primU.getProxU();
+						
+						while(temp!=null && nome.compareTo(temp.getNome())>0)
+							temp = temp.getProxU();
+						
+						novoU.setProxU(temp);
+						ant.setProxU(novoU);
+						System.out.println("Utilizador registrado com sucesso");
+					}
+				}
+				
+				else
+					System.out.println("O número já está sendo utilizado");
+			}
+		}
+		
 	}
 	
 	
@@ -139,8 +156,8 @@ public class Gestor {
 	 * @param ano
 	 * @param dispo
 	 */
-	public void addPub(int numPub, String titulo, int ano, String dispo) {
-		Publicacoes novoP = new Publicacoes(numPub,titulo,ano,dispo);
+	public void addPub(int numPub, String titulo, int ano) {
+		Publicacoes novoP = new Publicacoes(numPub,titulo,ano);
 		
 		if(procPub(numPub)==null) {
 			
@@ -202,8 +219,8 @@ public class Gestor {
 	 * Reservar Publicação
 	 * @param codigo
 	 * @param data
-	 * @param codR
-	 * @param codD
+	 * @param codU
+	 * @param codP
 	 */
 	public void resPub(int codigo, String data, int codU, int codP) {
 		
@@ -221,8 +238,23 @@ public class Gestor {
 				Reserva novo = new Reserva(codigo,data,refU,refP);
 				refP.addRes(novo);
 				refU.addRes(novo);
+				System.out.println("Reserva efetuada com sucesso");
 			}	
 		}
+	}
+	
+	/**
+	 * Procurar reservar de uma publicação
+	 * @param cod
+	 * @param numPub
+	 * @return
+	 */
+	public Reserva procRes(int cod, int numPub) {
+		Publicacoes pub = procPub(numPub);
+		
+		Reserva temp = pub.procReserva(cod);
+		
+		return temp;
 	}
 	
 	

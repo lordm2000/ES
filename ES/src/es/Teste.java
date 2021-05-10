@@ -41,7 +41,8 @@ public class Teste {
 		Scanner input = new Scanner(System.in);
 		Scanner input2 = new Scanner(System.in);
 		int res = 0;
-		Gestor biblio = new Gestor("admin");
+		
+		Gestor instancia = Gestor.getInstancia();
 		
 		int op;
 		
@@ -58,7 +59,7 @@ public class Teste {
 				System.out.print("Código de acesso: ");
 				String cod = input.next();
 				
-				if(biblio.loginAdmin(cod)) {
+				if(instancia.loginAdmin(cod)) {
 					menuAdmin();
 					do {
 						op = input.nextInt();
@@ -67,6 +68,12 @@ public class Teste {
 					while(op!=0) {
 						switch(op) {
 						case 1:{
+							String tipo;
+							System.out.println("Qual o tipo de utilizador(Estudante, Docente ou NDocente)?");
+							do {
+								tipo = input2.nextLine();
+							}
+							while(!tipo.equalsIgnoreCase("Estudante") && !tipo.equalsIgnoreCase("Docente") && !tipo.equalsIgnoreCase("NDocente"));
 							System.out.print("Número de utilizador: ");
 							int num = input.nextInt();
 							System.out.print("Password: ");
@@ -74,13 +81,13 @@ public class Teste {
 							System.out.print("Nome: ");
 							String nome = input2.nextLine();
 			
-							biblio.addUtilizador(num, password, nome);
+							instancia.addUtilizador(tipo, num, password, nome);
 						}	
 					
 						break;
 						
 						case 2:{
-							biblio.imprimeUti();
+							instancia.imprimeUti();
 						}
 						break;
 						
@@ -88,25 +95,20 @@ public class Teste {
 						case 3:{
 							System.out.print("Número da Publicação: ");
 							int codRef = input.nextInt();
-							String dispo;
-							System.out.print("Disponibilidade: ");
-							do {
-								dispo = input2.nextLine();
-							}
-							while(!dispo.equalsIgnoreCase("sim") && !dispo.equalsIgnoreCase("nao"));
+						
 							
 							System.out.print("Titulo: ");
 							String titulo = input2.nextLine();
 							System.out.print("Ano: ");
 							int ano = input.nextInt();
 							
-							biblio.addPub(codRef, titulo, ano, dispo);
+							instancia.addPub(codRef, titulo, ano);
 						}
 						break;
 	
 						
 						case 4:{
-							biblio.imprimePub();
+							instancia.imprimePub();
 						}
 						break;
 						
@@ -119,7 +121,7 @@ public class Teste {
 							System.out.print("Data: ");
 							String data = input.next();
 							
-							biblio.resPub(res++, data, codU, codP);
+							instancia.resPub(res++, data, codU, codP);
 						}
 						break;
 						
@@ -127,7 +129,7 @@ public class Teste {
 						case 6:{
 							System.out.print("Número da Publicação: ");
 							int codP = input.nextInt();
-							biblio.imprimeResPub(codP);
+							instancia.imprimeResPub(codP);
 						}
 						break;
 						
@@ -135,7 +137,7 @@ public class Teste {
 						case 7:{
 							System.out.print("Código do utilizador: ");
 							int codU = input.nextInt();
-							biblio.imprimeResUti(codU);
+							instancia.imprimeResUti(codU);
 						}
 						break;
 						
@@ -170,7 +172,7 @@ public class Teste {
 				int cod = input.nextInt();
 				System.out.print("Password: ");
 				String pass = input.next();
-				if(biblio.loginUti(cod, pass)!=null) {
+				if(instancia.loginUti(cod, pass)!=null) {
 					
 					menuReq();
 					do {
@@ -181,14 +183,14 @@ public class Teste {
 					while(op!=0) {
 						switch(op) {
 						case 1:{
-							System.out.println(biblio.procUti(cod));
+							System.out.println(instancia.procUti(cod));
 							
 						}
 						break;
 						
 						
 						case 2:{
-							biblio.imprimeResUti(cod);
+							instancia.imprimeResUti(cod);
 						}
 						break;
 						
@@ -198,7 +200,7 @@ public class Teste {
 							System.out.print("Data: ");
 							String data = input.next();
 							
-							biblio.resPub(res++, data, cod, codP);
+							instancia.resPub(res++, data, cod, codP);
 						}
 						break;
 						
@@ -208,7 +210,7 @@ public class Teste {
 						do {
 							op = input.nextInt();
 						}
-						while(op<0||op>17);
+						while(op<0||op>3);
 					}
 				}
 					
