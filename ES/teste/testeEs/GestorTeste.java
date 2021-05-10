@@ -74,5 +74,4 @@ class GestorTeste {
 		assertEquals(instancia.procRes(1, 1).getData(),"21-12-2019");
 		assertEquals(instancia.procRes(3, 1).getRefP().getTitulo(),"A ira de Joao Paulo");
 	}
-
 }

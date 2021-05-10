@@ -63,7 +63,6 @@ public class Gestor {
 	public void addUtilizador(String tipo, int num, String pass, String nome) {
 		
 		UtiFactory factory = new UtiFactory();
-
 		Utilizador novoU = factory.getUtilizador(tipo, num, pass, nome);
 		
 		if(novoU==null) {
@@ -163,12 +162,10 @@ public class Gestor {
 			
 				if(primP == null) {
 					primP = novoP;
-				
-					
+							
 					System.out.println("Publicação registrada com sucesso");
 				}
-					
-				
+								
 				else {
 					
 					if(titulo.compareTo(primP.getTitulo())<0) {
@@ -191,10 +188,8 @@ public class Gestor {
 						ant.setProxP(novoP);
 						
 						System.out.println("Publicação registrada com sucesso");
-					}
-					
-				}
-			
+					}		
+				}	
 		}
 		
 		else
